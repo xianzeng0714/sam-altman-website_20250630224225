@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sam Altman</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004080;
+            --accent-color: #f8f9fa;
+            --text-color: #333;
+            --light-gray: #e9ecef;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --success-color: #28a745;
+            --error-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            background-color: var(--accent-color);
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--medium-gray);
+        }
+
+        .contact-card {
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        .contact-card p {
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .contact-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .inquiry-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .inquiry-type {
+            flex: 1;
+            min-width: 150px;
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .inquiry-type:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-5px);
+        }
+
+        .inquiry-type.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .inquiry-type i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .stats-section {
+            background-color: var(--accent-color);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--medium-gray);
+        }
+
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+
+        .alert-error {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                order: 2;
+            }
+            
+            .contact-form-container {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                padding: 100px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .inquiry-types {
+                flex-direction: column;
+            }
+            
+            .inquiry-type {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Sam Altman</a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Work</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="active">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>I'm always open to discussing new projects, opportunities in AI, and potential collaborations.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="inquiry-types">
+                <div class="inquiry-type" data-type="speaking">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Speaking Engagements</h3>
+                </div>
+                <div class="inquiry-type" data-type="collaboration">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Collaborations</h3>
+                </div>
+                <div class="inquiry-type" data-type="press">
+                    <i class="fas fa-newspaper"></i>
+                    <h3>Press Inquiries</h3>
+                </div>
+                <div class="inquiry-type" data-type="other">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Other Inquiries</h3>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <div class="alert alert-success" id="success-alert">
+                            Your message has been sent successfully. I'll get back to you soon!
+                        </div>
+                        <div class="alert alert-error" id="error-alert">
+                            There was an error sending your message. Please try again.
+                        </div>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-block">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h2>Let's Connect</h2>
+                    <p>Whether you're interested in discussing AI advancements, potential collaborations, or just want to say hello, I'd love to hear from you.</p>
+                    
+                    <div class="contact-card">
+                        <h3>Email</h3>
+                        <p>For general inquiries:</p>
+                        <a href="mailto:inquiries@sama.com">inquiries@sama.com</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Social Media</h3>
+                        <p>Connect with me on social platforms:</p>
+                        <div class="social-links">
+                            <a href="https://twitter.com/sama" class="social-icon" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/altmansam" class="social-icon" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Response Time</h3>
+                        <p>I aim to respond to all inquiries within 3-5 business days. For urgent matters, please indicate in the subject line.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <h2>Engagement Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="speaking-count">50+</div>
+                    <div class="stat-label">Speaking Engagements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="countries-count">25+</div>
+                    <div class="stat-label">Countries Visited</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="startups-count">200+</div>
+                    <div class="stat-label">Startups Advised</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="followers-count">1M+</div>
+                    <div class="stat-label">Social Media Followers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sam Altman</h3>
+                    <p>Tech entrepreneur, investor, and AI advocate focused on advancing artificial intelligence for the benefit of humanity.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Work</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Medium</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sam Altman. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Inquiry type selection
+        const inquiryTypes = document.querySelectorAll('.inquiry-type');
+        let selectedType = null;
+
+        inquiryTypes.forEach(type => {
+            type.addEventListener('click', () => {
+                // Remove active class from all types
+                inquiryTypes.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked type
+                type.classList.add('active');
+                
+                // Set selected type
+                selectedType = type.dataset.type;
+                
+                // Update subject field with selected type
+                const subjectField = document.getElementById('subject');
+                subjectField.value = `${type.querySelector('h3').textContent} Inquiry`;
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        const successAlert = document.getElementById('success-alert');
+        const errorAlert = document.getElementById('error-alert');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate form (simple validation)
+            if (!name || !email || !subject || !message) {
+                errorAlert.style.display = 'block';
+                successAlert.style.display = 'none';
+                return;
+            }
+            
+            // In a real application, you would send the form data to a server here
+            // For this demo, we'll just simulate a successful submission
+            
+            // Show success message
+            successAlert.style.display = 'block';
+            errorAlert.style.display = 'none';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset inquiry type selection
+            inquiryTypes.forEach(t => t.classList.remove('active'));
+            selectedType = null;
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 5000);
+        });
+
+        // Animate statistics on scroll
+        function animateStats() {
+            const statsSection = document.querySelector('.stats-section');
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const targetValues = {
+                'speaking-count': 50,
+                'countries-count': 25,
+                'startups-count': 200,
+                'followers-count': 1000
+            };
+            
+            const suffixes = {
+                'speaking-count': '+',
+                'countries-count': '+',
+                'startups-count': '+',
+                'followers-count': 'k+'
+            };
+            
+            let animated = false;
+            
+            function checkScroll() {
+                if (animated) return;
+                
+                const rect = statsSection.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    animated = true;
+                    
+                    statNumbers.forEach(stat => {
+                        const id = stat.id;
+                        const targetValue = targetValues[id];
+                        const suffix = suffixes[id];
+                        
+                        let currentValue = 0;
+                        const increment = Math.ceil(targetValue / 50);
+                        
+                        const interval = setInterval(() => {
+                            currentValue += increment;
+                            
+                            if (currentValue >= targetValue) {
+                                currentValue = targetValue;
+                                clearInterval(interval);
+                            }
+                            
+                            stat.textContent = currentValue + suffix;
+                        }, 30);
+                    });
+                }
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Check on page load
+        }
+        
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            animateStats();
+        });
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
