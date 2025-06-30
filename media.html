@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writings & Media | Sam Altman</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #004080;
+            --accent-color: #e6f0ff;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Lato', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .hero {
+            background-color: var(--accent-color);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto;
+        }
+        
+        .interviews-section, .quotes-section {
+            padding: 40px 0;
+        }
+        
+        .interviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .interview-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .interview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .interview-content {
+            padding: 20px;
+        }
+        
+        .interview-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .interview-description {
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+        
+        .interview-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .interview-link:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .quote-card {
+            background-color: var(--accent-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .quote-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quote-text {
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        footer {
+            background-color: var(--light-gray);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            color: var(--dark-gray);
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin-left: 20px;
+        }
+        
+        .social-links a {
+            color: var(--dark-gray);
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                margin-left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .interviews-grid, .quotes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-links {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .social-links li:first-child {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Sam Altman</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="media.html" class="active">Writings & Media</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Writings & Media</h1>
+            <p>A collection of interviews, talks, and insights that reflect my thoughts on technology, innovation, and the future.</p>
+        </div>
+    </section>
+
+    <section class="interviews-section">
+        <div class="container">
+            <h2 class="section-title">Interviews & Talks</h2>
+            <div class="interviews-grid">
+                <div class="interview-card">
+                    <div class="interview-content">
+                        <h3 class="interview-title">TED 2025</h3>
+                        <p class="interview-description">A probing conversation with Chris Anderson about the future of AI, ethics, and superintelligence.</p>
+                        <a href="#" class="interview-link">Watch the talk →</a>
+                    </div>
+                </div>
+                <div class="interview-card">
+                    <div class="interview-content">
+                        <h3 class="interview-title">Harvard Fireside Chat (May 2024)</h3>
+                        <p class="interview-description">An intimate discussion on AI, user experience, and the path of technological progress.</p>
+                        <a href="#" class="interview-link">Watch the chat →</a>
+                    </div>
+                </div>
+                <div class="interview-card">
+                    <div class="interview-content">
+                        <h3 class="interview-title">U.S. Senate Testimony</h3>
+                        <p class="interview-description">Clear and direct testimony on AI regulation and the global AI race.</p>
+                        <a href="#" class="interview-link">Read the transcript →</a>
+                    </div>
+                </div>
+                <div class="interview-card">
+                    <div class="interview-content">
+                        <h3 class="interview-title">Stratechery Interview</h3>
+                        <p class="interview-description">In-depth discussion on OpenAI's journey and its mission to benefit humanity.</p>
+                        <a href="#" class="interview-link">Listen to the podcast →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quotes-section">
+        <div class="container">
+            <h2 class="section-title">Key Quotes & Insights</h2>
+            <div class="quotes-grid">
+                <div class="quote-card">
+                    <p class="quote-text">"The future is going to be weird."</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"The best way to predict the future is to build it."</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"A great company is a product of a great idea, tireless execution, and a little bit of luck."</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"The most dangerous risk of all – the risk of spending your life not doing what you want on the bet you can buy yourself the freedom to do it later."</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Hard work compounds like interest, and the earlier you do it, the more time you have for the benefits to pay off."</p>
+                </div>
+                <div class="quote-card">
+                    <p class="quote-text">"Go after the thing that you think is likely to change the world."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2025 Sam Altman. All rights reserved.</p>
+                <ul class="social-links">
+                    <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter">𝕏</i></a></li>
+                    <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin">in</i></a></li>
+                    <li><a href="#" aria-label="GitHub"><i class="fab fa-github">GH</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Add animation to quote cards on scroll
+            const quoteCards = document.querySelectorAll('.quote-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            quoteCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
